@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env: 
-  DOCKER_IMAGE_NAME : 'appfrontend'
+  DOCKER_IMAGE_NAME : 'appfrontend-azure'
 
 jobs:
   # Build and test 
