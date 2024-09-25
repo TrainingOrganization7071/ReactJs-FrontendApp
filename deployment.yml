@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appreactjs-deployment
+  labels:
+    app: appreactjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appreactjs
+  template:
+    metadata:
+      labels:
+        app: appreactjs
+    spec:
+      containers:
+      - name: reactfront
+        image: ---------------------
+        ports:
+        - containerPort: 3001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appreactjs-service
+spec:
+  selector:
+    app: appreactjs
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 3001
+    targetPort: 3001
+    nodePort: 31110
+
+
+
+
