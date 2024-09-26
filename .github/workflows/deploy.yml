@@ -11,7 +11,7 @@ on:
 
 env: 
   DOCKER_IMAGE_NAME : 'appfrontend-azure'
-  AZURE_WEBAPP_NAME: 'webapp-frontend-fencncsmejbwhmxz'
+  AZURE_WEBAPP_NAME: 'webapp-frontend-oyqhjtdaezcldnux'
   AZURE_WEBAPP_PACKAGE_PATH: './build'
 
 jobs:
