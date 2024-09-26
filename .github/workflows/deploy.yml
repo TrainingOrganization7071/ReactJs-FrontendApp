@@ -11,8 +11,8 @@ on:
 
 env: 
   DOCKER_IMAGE_NAME : 'appfrontend-azure'
-  AZURE_WEBAPP_NAME: 'webapp-frontend'
-  AZURE_WEBAPP_PACKAGE_PATH: ''
+  AZURE_WEBAPP_NAME: 'webapp-frontend-fencncsmejbwhmxz'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
 
 jobs:
   # Build and test 
@@ -43,14 +43,14 @@ jobs:
       - name: 1-Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: app-build
+          name: node-app
           path: ./build
 
-      - name: 2-Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app-1
-          path: .
+      #- name: 2-Upload artifact for deployment job
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: node-app-1
+      #    path: .
       
       #- name: 3-Upload artifact for deployment job
       #  uses: actions/upload-artifact@v4
@@ -109,7 +109,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app-1
+          name: node-app
       
       #- name: 'Deploy to Azure WebApp'
       #  id: deploy-to-webapp
