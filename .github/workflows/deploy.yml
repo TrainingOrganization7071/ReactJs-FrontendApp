@@ -106,10 +106,17 @@ jobs:
         with:
             fetch-depth: 0
 
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: node-app
+      - name: Install dependencies
+        run: npm ci
+    
+      - name: Run Build
+        run: npm run build --if-present
+      
+      # Error to download the artifact
+      #- name: Download artifact from build job
+      #  uses: actions/download-artifact@v3
+      #  with:
+      #    name: node-app
       
       #- name: 'Deploy to Azure WebApp'
       #  id: deploy-to-webapp
