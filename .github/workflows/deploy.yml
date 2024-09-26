@@ -11,6 +11,8 @@ on:
 
 env: 
   DOCKER_IMAGE_NAME : 'appfrontend-azure'
+  AZURE_WEBAPP_NAME: ''
+  AZURE_WEBAPP_PACKAGE_PATH: ''
 
 jobs:
   # Build and test 
@@ -38,13 +40,25 @@ jobs:
       - name: Run Build
         run: npm run build --if-present
         
-      - name: Upload build artifact
+      - name: 1-Upload build artifact
         uses: actions/upload-artifact@v3
         with:
           name: app-build
           path: ./build
 
-     
+      - name: 2-Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: .
+      
+      - name: 2-Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: .
+  
+
   Deploy_To_DockerHub:
     runs-on: ubuntu-latest
     needs: Build
@@ -73,6 +87,47 @@ jobs:
           context: ./
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE_NAME}}:${{github.run_id}}
+
+
+  Deploy_To_WebApp:
+    runs-on: ubuntu-latest
+    needs: Deploy_To_DockerHub
+
+    environment:
+      name: 'Production'
+      #url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    permissions:
+      id-token: write #This is required for requesting the JWT
+        
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+      
+      #- name: 'Deploy to Azure WebApp'
+      #  id: deploy-to-webapp
+      #  uses: azure/webapps-deploy@85270a1854658d167ab239bce43949edb336fa7c
+      #  with:
+      #    app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      #    publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+      #    package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+              
+             
+
+
+
+
+
+
+
+
 
 
 
