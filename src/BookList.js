@@ -26,7 +26,7 @@ const BooksList = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading while data is being fetched
+    return <div>Loading Data ...</div>; // Show loading while data is being fetched
   }
 
   if (error) {
