@@ -12,7 +12,7 @@ const BooksList = () => {
     // Fetch the books data from the Node.js server
     const fetchBooks = async () => {
       try {
-        var api = "http://localhost:3001/books"
+        const api = process.env.REACT_APP_API;
         const response = await axios.get(api);
         setBooks(response.data); // Set the books data
         setLoading(false); // Stop the loading spinner
