@@ -13,7 +13,8 @@ const BooksList = () => {
     const fetchBooks = async () => {
       try {
         const api = process.env.REACT_APP_API;
-        const response = await axios.get(api);
+        console.log(api)
+        const response = await axios.get("http://20.233.227.7:3001/books");
         setBooks(response.data); // Set the books data
         setLoading(false); // Stop the loading spinner
       } catch (error) {
