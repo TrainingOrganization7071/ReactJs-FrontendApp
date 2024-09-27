@@ -17,7 +17,7 @@ const BooksList = () => {
         setBooks(response.data); // Set the books data
         setLoading(false); // Stop the loading spinner
       } catch (error) {
-        setError('Error fetching books data');
+        setError('Error Fetching Books Data');
         setLoading(false);
       }
     };
