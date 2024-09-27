@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-require('dotenv').config()
 
 const BooksList = () => {
   const [books, setBooks] = useState([]);
@@ -9,7 +8,7 @@ const BooksList = () => {
   const [error, setError] = useState(null);
   
   
-  var api = "http://20.174.67.253:3001/books"
+  var api = "http://localhost:3001/books"
   
 
   useEffect(() => {
