@@ -9,7 +9,7 @@ const BooksList = () => {
   const [error, setError] = useState(null);
   
   
-  var api = "http://localhost:3001/books"
+  var api = "http://20.174.67.253:3001/books"
   
 
   useEffect(() => {
