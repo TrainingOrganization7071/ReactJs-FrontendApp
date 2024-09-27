@@ -13,7 +13,7 @@ env:
   DOCKER_IMAGE_NAME : 'appfrontend-azure'
   DOCKER_IMAGE_TAG: 'latest'
   AZURE_RESOURCE_GROUP: 'minimal_infra_auth'
-  AZURE_WEBAPP_NAME: 'webapp-frontend-lpctygbcwcptmagj'
+  AZURE_WEBAPP_NAME: 'webapp-frontend-uosgmybabmzakzxf'
   AZURE_WEBAPP_PACKAGE_PATH: './build'
   AZURE_SERVICE_PLAN: 'webapp-frontend-plan'
   
