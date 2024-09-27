@@ -7,14 +7,12 @@ const BooksList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  
-  var api = "http://localhost:3001/books"
-  
 
   useEffect(() => {
     // Fetch the books data from the Node.js server
     const fetchBooks = async () => {
       try {
+        var api = "http://localhost:3001/books"
         const response = await axios.get(api);
         setBooks(response.data); // Set the books data
         setLoading(false); // Stop the loading spinner
